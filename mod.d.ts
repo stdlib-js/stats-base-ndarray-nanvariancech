@@ -1,4 +1,4 @@
-/**
+/*
 * @license Apache-2.0
 *
 * Copyright (c) 2026 The Stdlib Authors.
@@ -16,38 +16,40 @@
 * limitations under the License.
 */
 
-'use strict';
+// TypeScript Version: 4.1
+
+/// <reference types="https://cdn.jsdelivr.net/gh/stdlib-js/types@main/index.d.ts"/>
+
+import { typedndarray } from '@stdlib/types/ndarray';
 
 /**
-* Compute the variance of a one-dimensional ndarray, ignoring `NaN` values and using a one-pass trial mean algorithm.
+* Computes the variance of a one-dimensional ndarray, ignoring `NaN` values and using a one-pass trial mean algorithm.
 *
-* @module @stdlib/stats-base-ndarray-nanvariancech
+* ## Notes
+*
+* -   The function expects the following ndarrays:
+*
+*     -   a one-dimensional input ndarray.
+*     -   a zero-dimensional ndarray specifying the degrees of freedom adjustment.
+*
+* @param arrays - array-like object containing ndarrays
+* @returns variance
 *
 * @example
 * var vector = require( '@stdlib/ndarray-vector-ctor' );
 * var scalar2ndarray = require( '@stdlib/ndarray-from-scalar' );
-* var nanvariancech = require( '@stdlib/stats-base-ndarray-nanvariancech' );
 *
-* var opts = {
-*     'dtype': 'generic'
-* };
-*
-* // Define a one-dimensional input ndarray:
 * var x = vector( [ 1.0, -2.0, 2.0, NaN ], 'generic' );
+* var correction = scalar2ndarray( 1.0, {
+*     'dtype': 'generic'
+* });
 *
-* // Specify the degrees of freedom adjustment:
-* var correction = scalar2ndarray( 1.0, opts );
-*
-* // Compute the variance:
 * var v = nanvariancech( [ x, correction ] );
 * // returns ~4.3333
 */
-
-// MODULES //
-
-var main = require( './main.js' );
+declare function nanvariancech( arrays: [ typedndarray<number>, typedndarray<number> ] ): number;
 
 
 // EXPORTS //
 
-module.exports = main;
+export = nanvariancech;
